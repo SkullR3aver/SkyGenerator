@@ -1,0 +1,105 @@
+# ===== SkyGenerator =====
+# Dodawaj własne generatory - wystarczy skopiować blok i zmienić id.
+# block    - blok, który gracz stawia (musi być blokiem)
+# produces - co generator produkuje do magazynu
+# amount   - ile sztuk na cykl, interval - co ile sekund
+# capacity - maksymalna pojemność magazynu (sztuk)
+# cost     - koszt zakupu w sklepie (itemy z ekwipunku gracza); amount: 0 = za darmo
+# armor-points - punkty/sekundę dla zbroi gracza stojącego na tym generatorze
+
+# Maksymalna liczba generatorów na gracza (0 = bez limitu)
+max-per-player: 30
+
+generators:
+  coal:
+    name: "&8Generator Węgla"
+    block: COAL_BLOCK
+    produces: COAL
+    amount: 1
+    interval: 5
+    capacity: 512
+    cost:
+      material: COBBLESTONE
+      amount: 64
+    armor-points: 1
+  iron:
+    name: "&fGenerator Żelaza"
+    block: IRON_BLOCK
+    produces: IRON_INGOT
+    amount: 1
+    interval: 6
+    capacity: 512
+    cost:
+      material: COAL
+      amount: 128
+    armor-points: 2
+  gold:
+    name: "&6Generator Złota"
+    block: GOLD_BLOCK
+    produces: GOLD_INGOT
+    amount: 1
+    interval: 8
+    capacity: 512
+    cost:
+      material: IRON_INGOT
+      amount: 128
+    armor-points: 3
+  diamond:
+    name: "&bGenerator Diamentów"
+    block: DIAMOND_BLOCK
+    produces: DIAMOND
+    amount: 1
+    interval: 10
+    capacity: 256
+    cost:
+      material: GOLD_INGOT
+      amount: 128
+    armor-points: 5
+  emerald:
+    name: "&aGenerator Szmaragdów"
+    block: EMERALD_BLOCK
+    produces: EMERALD
+    amount: 1
+    interval: 15
+    capacity: 256
+    cost:
+      material: DIAMOND
+      amount: 64
+    armor-points: 8
+
+# Ulepszanie zbroi przez stanie na generatorze
+armor:
+  enabled: true
+  # Maksymalny poziom sztuki zbroi (poziom = enchant Ochrona)
+  max-level: 5
+  # Punkty na poziom 1: base-points, na kolejne: base-points * multiplier^poziom
+  base-points: 60
+  multiplier: 1.5
+  # Czy gracz musi stać na ziemi (nie latać)
+  require-on-ground: true
+
+messages:
+  prefix: "&8[&bSkyGenerator&8] "
+  gui-shop-title: "&8Sklep z generatorami"
+  gui-storage-title: "&8Magazyn generatora"
+  bought: "&aKupiłeś &f%name%&a!"
+  not-enough: "&cNie stać Cię! Potrzebujesz &f%amount%x %item%&c."
+  placed: "&aPostawiłeś &f%name%&a. Kliknij prawym, aby otworzyć magazyn."
+  limit: "&cOsiągnąłeś limit generatorów (&f%max%&c)."
+  not-owner: "&cTo nie jest Twój generator."
+  unknown-type: "&cTen generator ma nieznany typ (sprawdź config)."
+  storage-empty: "&cMagazyn jest pusty."
+  withdrawn: "&aWyciągnięto &f%amount%x %item%&a."
+  inventory-full: "&cEkwipunek pełny - część itemów została w magazynie."
+  reloaded: "&aKonfiguracja przeładowana."
+  no-permission: "&cNie masz uprawnień."
+  player-only: "&cTa komenda jest tylko dla graczy."
+  usage-give: "&cUżycie: /sg give <gracz> <typ> [ilość]"
+  gave: "&aDano &f%amount%x %name% &agraczowi &f%player%&a."
+  armor-level-up: "&aTwoja sztuka zbroi (&f%piece%&a) awansowała na poziom &e%level%&a!"
+  armor-actionbar: "&7Generator: &a+%points% pkt/s &8| &7Najbliższe ulepszenie: &e%progress%&7/&e%needed%"
+  armor-actionbar-maxed: "&7Generator: &6cała zbroja ma maksymalny poziom!"
+  armor-no-armor: "&7Generator: &czałóż zbroję, aby ją ulepszać."
+  lore-level: "&7Poziom generatora: &e%level%&7/&e%max%"
+  lore-progress: "&7Postęp: &e%progress%&7/&e%needed%"
+  lore-maxed: "&6Maksymalny poziom!"

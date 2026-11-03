@@ -1,0 +1,20 @@
+name: SkyGenerator
+version: ${project.version}
+main: pl.skygen.skygenerator.SkyGenerator
+api-version: '1.21'
+description: Generatory z magazynem i ulepszaniem zbroi (SkyGen)
+commands:
+  skygenerator:
+    description: Sklep z generatorami i komendy admina
+    usage: /<command> [give|reload]
+    aliases: [gen, generator, generatory, sg]
+permissions:
+  skygenerator.use:
+    description: Korzystanie ze sklepu i generatorów
+    default: true
+  skygenerator.admin:
+    description: give i reload
+    default: op
+  skygenerator.bypass:
+    description: Dostęp do cudzych generatorów, brak limitu
+    default: op
